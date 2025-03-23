@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import type { PropType } from 'vue'
 
-const appConfig = useAppConfig()
+// No need for appConfig anymore as we're using Tailwind classes
 
 const props = defineProps({
   variant: {
@@ -23,69 +23,39 @@ const props = defineProps({
 defineEmits(['click'])
 
 const buttonType = computed(() => props.type)
+
+// Generate classes based on variant
+const buttonClasses = computed(() => {
+  const classes = ['inline-flex items-center justify-center py-2 px-4 rounded-md font-medium transition-colors']
+  
+  switch (props.variant) {
+    case 'primary':
+      classes.push('bg-primary text-primary-foreground hover:bg-primary/90')
+      break
+    case 'secondary':
+      classes.push('bg-secondary text-secondary-foreground hover:bg-secondary/80')
+      break
+    case 'outline':
+      classes.push('border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground')
+      break
+    case 'text':
+      classes.push('bg-transparent text-primary py-1 px-2 hover:underline')
+      break
+  }
+  
+  if (props.full) {
+    classes.push('w-full')
+  }
+  
+  return classes.join(' ')
+})
 </script>
 
 <template>
-  <button :class="['btn', variant, { 'btn-full': full }]" 
+  <button 
+    :class="buttonClasses" 
     :type="buttonType"
     @click="$emit('click', $event)">
     <slot />
   </button>
 </template>
-
-<style scoped>
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-}
-
-.primary {
-  background-color: v-bind('appConfig.theme.colors.primary');
-  color: white;
-}
-
-.primary:hover {
-  filter: brightness(1.1);
-}
-
-.secondary {
-  background-color: v-bind('appConfig.theme.colors.secondary');
-  color: white;
-}
-
-.secondary:hover {
-  filter: brightness(1.1);
-}
-
-.outline {
-  background-color: transparent;
-  border: 1px solid v-bind('appConfig.theme.colors.primary');
-  color: v-bind('appConfig.theme.colors.primary');
-}
-
-.outline:hover {
-  background-color: v-bind('appConfig.theme.colors.primary');
-  color: white;
-}
-
-.text {
-  background-color: transparent;
-  color: v-bind('appConfig.theme.colors.primary');
-  padding: 0.25rem 0.5rem;
-}
-
-.text:hover {
-  text-decoration: underline;
-}
-
-.btn-full {
-  width: 100%;
-}
-</style>

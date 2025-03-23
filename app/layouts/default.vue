@@ -1,83 +1,30 @@
 <template>
-  <div class="layout">
-    <header>
-      <nav>
-        <NuxtLink to="/" class="logo">Portfolio</NuxtLink>
-        <div class="nav-links">
-          <NuxtLink to="/">Home</NuxtLink>
-          <NuxtLink to="/projects">Projects</NuxtLink>
-          <NuxtLink to="/about">About</NuxtLink>
-          <NuxtLink to="/contact">Contact</NuxtLink>
+  <div class="flex flex-col min-h-screen bg-background text-foreground">
+    <header class="border-b border-border">
+      <nav class="container mx-auto py-4 px-4 flex justify-between items-center">
+        <NuxtLink to="/" class="text-xl font-bold text-primary">Portfolio</NuxtLink>
+        <div class="flex items-center gap-6">
+          <NuxtLink to="/" class="text-foreground hover:text-primary transition-colors">Home</NuxtLink>
+          <NuxtLink to="/projects" class="text-foreground hover:text-primary transition-colors">Projects</NuxtLink>
+          <NuxtLink to="/about" class="text-foreground hover:text-primary transition-colors">About</NuxtLink>
+          <NuxtLink to="/contact" class="text-foreground hover:text-primary transition-colors">Contact</NuxtLink>
+          <ThemeToggle />
         </div>
       </nav>
     </header>
     
-    <main>
+    <main class="flex-1 container mx-auto py-8 px-4">
       <slot />
     </main>
     
-    <footer>
-      <p>&copy; {{ new Date().getFullYear() }} My Portfolio. All rights reserved.</p>
+    <footer class="py-6 border-t border-border bg-muted/30">
+      <div class="container mx-auto text-center text-muted-foreground">
+        <p>&copy; {{ new Date().getFullYear() }} My Portfolio. All rights reserved.</p>
+      </div>
     </footer>
   </div>
 </template>
 
-<style scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: v-bind('appConfig.theme.colors.background');
-  color: v-bind('appConfig.theme.colors.text');
-}
-
-header {
-  padding: 1rem 2rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: v-bind('appConfig.theme.colors.primary');
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: v-bind('appConfig.theme.colors.text');
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover, .nav-links a.router-link-active {
-  color: v-bind('appConfig.theme.colors.primary');
-}
-
-main {
-  flex: 1;
-}
-
-footer {
-  padding: 1.5rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-</style>
-
 <script setup lang="ts">
-const appConfig = useAppConfig()
+// We no longer need appConfig for theming since we're using Tailwind classes
 </script>
