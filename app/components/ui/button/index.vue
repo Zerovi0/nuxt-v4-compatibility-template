@@ -1,20 +1,17 @@
-<template>
-  <button :class="['btn', variant, { 'btn-full': full }]" 
-    :type="type"
-    @click="$emit('click', $event)">
-    <slot />
-  </button>
-</template>
-
 <script setup lang="ts">
-defineProps({
+import { computed } from 'vue'
+import type { PropType } from 'vue'
+
+const appConfig = useAppConfig()
+
+const props = defineProps({
   variant: {
     type: String,
     default: 'primary',
     validator: (value: string) => ['primary', 'secondary', 'outline', 'text'].includes(value)
   },
   type: {
-    type: String,
+    type: String as PropType<'button' | 'submit' | 'reset'>,
     default: 'button'
   },
   full: {
@@ -24,7 +21,17 @@ defineProps({
 })
 
 defineEmits(['click'])
+
+const buttonType = computed(() => props.type)
 </script>
+
+<template>
+  <button :class="['btn', variant, { 'btn-full': full }]" 
+    :type="buttonType"
+    @click="$emit('click', $event)">
+    <slot />
+  </button>
+</template>
 
 <style scoped>
 .btn {
@@ -82,7 +89,3 @@ defineEmits(['click'])
   width: 100%;
 }
 </style>
-
-<script>
-const appConfig = useAppConfig()
-</script>

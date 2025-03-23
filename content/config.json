@@ -1,0 +1,9 @@
+{
+  "documentDriven": true,
+  "sources": ["content"],
+  "schema": {
+    "title": { "type": "string" },
+    "description": { "type": "string", "optional": true },
+    "coverImage": { "type": "string", "optional": true }
+  }
+}
