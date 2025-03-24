@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   srcDir: 'app/',
   alias: {
-    '@components': './app/components',
+    '@components': './app/components/',
     '@composables': './app/composables',
     '@utils': './app/utils',
     '@server': './server',
@@ -34,10 +34,10 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@vueuse/nuxt',
     ['shadcn-nuxt', {
-      componentDir: './app/components/ui',
+      componentDir: './components',
       prefix: '',
       aliases: {
-        components: '@components',
+        components: '@omponents',
         utils: '@utils'
       }
     }],
