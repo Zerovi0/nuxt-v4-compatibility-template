@@ -26,6 +26,5 @@
 </template>
 
 <script setup lang="ts">
-// Import the ThemeToggle component with relative path
-import { ThemeToggle } from '../components/theme-toggle'
+// No imports needed - ThemeToggle is auto-imported by Nuxt
 </script>

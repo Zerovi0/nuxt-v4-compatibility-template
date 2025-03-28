@@ -1,15 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   srcDir: 'app/',
-  // Using consistent alias patterns with Nuxt's built-in alias system
+  
+  // Aliases needed by both Nuxt and Shadcn components
   alias: {
-    // Following best practices: use '@/' for direct src dir references and '~/' for root
-    // These patterns are more consistent with Nuxt 3 conventions
     '@components': './app/components',
     '@composables': './app/composables',
     '@utils': './app/utils',
@@ -17,47 +15,53 @@ export default defineNuxtConfig({
     '@modules': './modules',
     '@public': './public'
   },
+  
+  // Auto-imports optimization
+  imports: {
+    dirs: [
+      'app/utils',
+      'app/stores'
+    ]
+  },
+  
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}
     }
   },
+  
   vite: {
-    plugins: [
-      // Add vite-tsconfig-paths to resolve paths in tsconfig.json
-      tsConfigPaths()
-    ]
+    optimizeDeps: {
+      include: ['vue', 'vue-router']
+    }
   },
+  
+  // Simplified modules configuration
   modules: [
-    ['@nuxtjs/tailwindcss', {
-      // Using the native Nuxt module for Tailwind CSS
-      configPath: '~/tailwind.config.js',
-      exposeConfig: true,
-      injectPosition: 0,
-      viewer: true
-    }],
+    '@nuxtjs/tailwindcss',
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    ['@nuxt/content', {
+    ['@nuxt/content', { 
       documentDriven: true,
-      navigation: {
-        fields: ['title', 'description', 'coverImage']
-      }
+      navigation: { fields: ['title', 'description', 'coverImage'] }
     }],
     '@nuxt/fonts',
     '@vueuse/nuxt',
     ['shadcn-nuxt', {
       componentDir: './app/components',
       prefix: '',
-      aliases: {
-        components: '@components',
-        utils: '@utils'
-      }
     }],
     '@pinia/nuxt'
-  ]
+  ],
+  
+  // Module-specific configurations
+  tailwindcss: {
+    configPath: '~/tailwind.config.js',
+    exposeConfig: true,
+    viewer: true
+  }
 })

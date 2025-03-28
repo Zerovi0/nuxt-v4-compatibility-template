@@ -1,12 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ["class"],
-    content: [
+  darkMode: ["class"],
+  // Optimized content paths based on project structure
+  content: [
     "./app/**/*.{js,ts,jsx,tsx,vue}",
-    "./components/**/*.{js,ts,jsx,tsx,vue}",
-    "./layouts/**/*.{js,ts,jsx,tsx,vue}",
-    "./pages/**/*.{js,ts,jsx,tsx,vue}",
-    "./plugins/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
   	extend: {

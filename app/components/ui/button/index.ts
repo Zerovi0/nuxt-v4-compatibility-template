@@ -1,8 +1,9 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+import ButtonComponent from './Button.vue'
 
-// No need to explicitly import and re-export the Button component
-// Nuxt will auto-import it from the components directory
-// This simplifies the code while maintaining shadcn-vue compatibility
+// Export the Button component as a named export for proper imports
+// This is needed for explicit imports in other components
+export const Button = ButtonComponent
 
 // Export button variants for styling
 export const buttonVariants = cva(

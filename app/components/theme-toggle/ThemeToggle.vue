@@ -16,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-// No need to import Button - it's auto-imported by Nuxt from the components directory
+// Explicitly import Button for reliability
+import { Button } from '../ui/button'
 
 // Auto-import the theme composable through Nuxt's auto-imports system
 // This relies on the composables directory being properly configured in nuxt.config.ts
