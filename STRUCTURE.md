@@ -52,6 +52,8 @@ Contains static assets that are served directly at the root URL path:
 - `package.json` 
 - `package-lock.json` 
 - `tsconfig.json`
+- `tailwind.config.js` - Tailwind CSS configuration
+
 
 ## Generated Directories
 
@@ -64,3 +66,7 @@ These directories are generated during development/build and are not committed t
 
 - `modules/` - Reserved for custom Nuxt modules development
 - `layers/` - Reserved for Nuxt layers to organize and share code between projects
+
+## Component System
+
+- `components.json` - Shadcn component configuration
