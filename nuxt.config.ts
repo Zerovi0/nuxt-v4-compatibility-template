@@ -6,6 +6,39 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   srcDir: 'app/',
   
+  // Ultra-minimal script to prevent theme flash
+  app: {
+    head: {
+      script: [
+        {
+          innerHTML: `
+            (function() {
+              try {
+                // Check main theme key, then legacy key
+                var storedTheme = localStorage.getItem('nuxt-theme') 
+                  || localStorage.getItem('nuxt-theme-preference');
+                
+                // Apply dark theme if:
+                // 1. Explicitly set to dark
+                if (storedTheme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                } 
+                // 2. Not explicitly set to light AND system prefers dark
+                else if (storedTheme !== 'light' 
+                  && window.matchMedia('(prefers-color-scheme:dark)').matches) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch(e) {
+                // Silent fail for private browsing mode
+              }
+            })();
+          `,
+          id: 'theme-init'
+        },
+      ],
+    },
+  },
+  
   // Aliases needed by both Nuxt and Shadcn components
   alias: {
     '@components': './app/components',
