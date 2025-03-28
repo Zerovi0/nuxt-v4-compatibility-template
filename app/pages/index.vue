@@ -1,20 +1,20 @@
 <template>
-  <div class="container">
-    <h1>Welcome to my Portfolio</h1>
-    <p>This is a Nuxt 3 application with a custom directory structure.</p>
+  <div class="container mx-auto px-8 py-8">
+    <h1 class="text-4xl font-bold mb-4">Welcome to my Portfolio</h1>
+    <p class="text-lg">This is a Nuxt 3 application with a custom directory structure.</p>
     
-    <div class="cards">
-      <div class="card">
-        <h2>Projects</h2>
-        <p>Check out my latest work.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="bg-card/10 rounded-lg p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+        <h2 class="text-2xl font-semibold mb-2">Projects</h2>
+        <p class="text-muted-foreground">Check out my latest work.</p>
       </div>
-      <div class="card">
-        <h2>Skills</h2>
-        <p>Technologies I work with.</p>
+      <div class="bg-card/10 rounded-lg p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+        <h2 class="text-2xl font-semibold mb-2">Skills</h2>
+        <p class="text-muted-foreground">Technologies I work with.</p>
       </div>
-      <div class="card">
-        <h2>Contact</h2>
-        <p>Get in touch with me.</p>
+      <div class="bg-card/10 rounded-lg p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+        <h2 class="text-2xl font-semibold mb-2">Contact</h2>
+        <p class="text-muted-foreground">Get in touch with me.</p>
       </div>
     </div>
   </div>
@@ -26,39 +26,3 @@ definePageMeta({
   layout: 'default'
 })
 </script>
-
-<style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-</style>

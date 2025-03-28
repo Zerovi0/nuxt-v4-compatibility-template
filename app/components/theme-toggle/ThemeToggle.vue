@@ -16,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
+// No need to import Button - it's auto-imported by Nuxt from the components directory
 
-// Use our theme composable
+// Auto-import the theme composable through Nuxt's auto-imports system
+// This relies on the composables directory being properly configured in nuxt.config.ts
 const { isDark, toggleTheme } = useTheme()
 </script>

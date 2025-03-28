@@ -26,5 +26,6 @@
 </template>
 
 <script setup lang="ts">
-// We no longer need appConfig for theming since we're using Tailwind classes
+// Import the ThemeToggle component with relative path
+import { ThemeToggle } from '../components/theme-toggle'
 </script>

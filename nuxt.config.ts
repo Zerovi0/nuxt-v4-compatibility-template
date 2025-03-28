@@ -1,16 +1,33 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tsConfigPaths from 'vite-tsconfig-paths'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   srcDir: 'app/',
+  // Using consistent alias patterns with Nuxt's built-in alias system
   alias: {
-    '@components': './app/components/',
+    // Following best practices: use '@/' for direct src dir references and '~/' for root
+    // These patterns are more consistent with Nuxt 3 conventions
+    '@components': './app/components',
     '@composables': './app/composables',
     '@utils': './app/utils',
     '@server': './server',
     '@modules': './modules',
     '@public': './public'
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
+    }
+  },
+  vite: {
+    plugins: [
+      // Add vite-tsconfig-paths to resolve paths in tsconfig.json
+      tsConfigPaths()
+    ]
   },
   modules: [
     ['@nuxtjs/tailwindcss', {
@@ -34,10 +51,10 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@vueuse/nuxt',
     ['shadcn-nuxt', {
-      componentDir: './components',
+      componentDir: './app/components',
       prefix: '',
       aliases: {
-        components: '@omponents',
+        components: '@components',
         utils: '@utils'
       }
     }],

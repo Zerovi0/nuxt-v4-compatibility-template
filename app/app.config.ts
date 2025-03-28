@@ -1,13 +1,8 @@
 export default defineAppConfig({
   title: 'My Portfolio',
+  // Note: Using dark mode preference only for initial load
+  // Actual theme colors are managed by Tailwind CSS variables
   theme: {
-    dark: true,
-    colors: {
-      primary: '#3B82F6',
-      secondary: '#10B981',
-      accent: '#8B5CF6',
-      background: '#111827',
-      text: '#F3F4F6'
-    }
+    dark: true
   }
 })
