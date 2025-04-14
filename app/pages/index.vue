@@ -1,64 +1,20 @@
 <template>
-  <div class="container">
-    <h1>Welcome to my Portfolio</h1>
-    <p>This is a Nuxt 3 application with a custom directory structure.</p>
+  <div class="py-8">
+    <h1 class="text-3xl font-bold mb-4 text-foreground">Welcome to My Portfolio</h1>
     
-    <div class="cards">
-      <div class="card">
-        <h2>Projects</h2>
-        <p>Check out my latest work.</p>
-      </div>
-      <div class="card">
-        <h2>Skills</h2>
-        <p>Technologies I work with.</p>
-      </div>
-      <div class="card">
-        <h2>Contact</h2>
-        <p>Get in touch with me.</p>
-      </div>
+    <div class="bg-card text-card-foreground rounded-lg border p-6 shadow-sm max-w-2xl">
+      <p class="mb-4">
+        Thank you for visiting my portfolio website. This site is built with Nuxt.js and features a clean, accessible design that respects your theme preferences.
+      </p>
+      <p>
+        Try the theme toggle in the menubar to switch between light and dark mode. The content on this page will automatically adjust to provide the best reading experience in either theme.
+      </p>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 definePageMeta({
-  title: 'Home',
   layout: 'default'
 })
 </script>
-
-<style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-</style>

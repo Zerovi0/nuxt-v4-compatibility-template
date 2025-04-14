@@ -1,15 +1,4 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["app/components/*"],
-      "@composables/*": ["app/composables/*"],
-      "@utils/*": ["app/utils/*"],
-      "@server/*": ["server/*"],
-      "@modules/*": ["modules/*"],
-      "@public/*": ["public/*"]
-    }
-  }
+  "extends": "./.nuxt/tsconfig.json"
 }
