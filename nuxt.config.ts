@@ -17,7 +17,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
-    '@nuxt/content',
     '@nuxt/icon',
     '@nuxt/image',
     'shadcn-nuxt',
