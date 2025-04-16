@@ -42,24 +42,7 @@ This document outlines the folder structure of the Nuxt.js portfolio project, in
 Contains static assets that are served directly at the root URL path:
 - `favicon.ico` - Website favicon
 - `robots.txt` - Instructions for web crawlers
-
-## Configuration Files
-
-- `.env.example` 
-- `.gitignore` 
-- `eslint.config.mjs`
-- `nuxt.config.ts`
-- `package.json` 
-- `package-lock.json` 
-- `tsconfig.json`
-
-## Generated Directories
-
-These directories are generated during development/build and are not committed to version control:
-- `.nuxt/` - Development build files
-- `.output/` - Production build output
-- `node_modules/` - Installed dependencies
-
+- 
 ## Module System
 
 - `modules/` - Reserved for custom Nuxt modules development
